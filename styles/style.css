@@ -273,6 +273,8 @@
 
 .sector:last-of-type .sector-title {
   color: var(--sector-dark-title);
+  grid-column: 1/-1;
+  inline-size: 100%;
 }
 
 .sector:last-of-type {
@@ -288,12 +290,6 @@
     gap: 10px;
   }
 }
-
-.sector:last-of-type .sector-title {
-  grid-column: 1/-1;
-  inline-size: 100%;
-}
-
 
 .sector:last-of-type .sector__pic {
   object-fit: cover;
