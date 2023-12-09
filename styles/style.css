@@ -1,5 +1,3 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   background-image: var(--background-image);
@@ -8,15 +6,16 @@
   background-size: cover;
   background-attachment: fixed;
   background-color: var(--background-color);
-  font-family: 'IBM Plex mono', monospace;
+  font-family: var(--main-font-family);
   color: var(--main-text-color);
   font-size: 18px;
 }
 
 .header {
+  min-block-size: 668px;
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
-  block-size: 80vh;
+  block-size: 100vh;
   align-items: center;
   padding: 20px;
   position: relative;
@@ -27,7 +26,6 @@
   .header {
     padding: 10px;
     margin-block-end: 40px;
-    block-size: 100vh;
   }
 }
 
@@ -55,6 +53,7 @@
 
 .decorated-rec {
   position: absolute;
+  text-transform: uppercase;
   color: var(--decorated-rec-color);
   top: 21px;
   right: 49px;
@@ -98,16 +97,21 @@
 }
 
 .header__theme-menu-button {
-  border: 1px solid var(--sector-title-color);
+  border: 1px solid transparent;
   background-color: transparent;
   cursor: pointer;
   font-family: 'IBM Plex mono', monospace;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 100%;
   text-transform: lowercase;
   color: var(--sector-title-color);
   padding: 0 13px;
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+  border: 1px solid var(--corner-color);
 }
 
 .header__theme-menu-button:hover {
@@ -131,6 +135,7 @@
   font-weight: 700;
   font-style: normal;
   text-shadow: 4px 4px 0 var(--title-shadow);
+  margin-inline-start: -2%;
 }
 
 @media screen (width < 768px) {
@@ -173,21 +178,21 @@
   }
 }
 
-.sector {
-  line-height: 130%;
-}
-
 .sector-title {
   color: var(--sector-title-color);
   font-weight: 700;
   font-size: 18px;
 }
 
+.sector-what .sector-title {
+  inline-size: 30%;
+}
+
 @media screen and (width < 1024px) and (width >= 768px) {
-  .sector:first-of-type .sector-title, .sector:nth-of-type(3) .sector-title {
+  .sector-why .sector-title, .sector-how .sector-title {
     inline-size: 90%;
   }
-  .sector:nth-last-of-type(3) .sector-title {
+  .sector-what .sector-title {
     inline-size: 30%;
   }
 }
@@ -202,6 +207,10 @@
   margin-block-end: 10px;
 }
 
+.sector-how .sector__article-title {
+  margin-block-end: 0;
+}
+
 .sector__article-link {
   color: var(--main-text-color);
   text-shadow: 2px 2px 0 var(--link-shadow);
@@ -209,8 +218,7 @@
 }
 
 .sector__article-link:hover {
-  text-decoration-line: underline;
-  text-underline-position: under;
+  border-block-end: 1px solid var(--main-text-color);
 }
 
 .sector__article-link:focus {
@@ -222,44 +230,46 @@
 }
 
 
-.sector:first-of-type, .sector:nth-of-type(3) {
+.sector-why, .sector-how {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 10px;
+  line-height: 130%;
 }
 
-.sector:first-of-type .sector__article-list, .sector:nth-of-type(3) .sector__article-list {
+.sector-why .sector__article-list, .sector-how .sector__article-list {
   display: grid;
   gap: 20px;
 }
 
-.sector:nth-last-of-type(3) {
+.sector-what {
   display: grid;
   grid-template-rows: repeat(2, auto);
   gap: 20px;
+  line-height: 130%;
 }
 
-.sector:nth-last-of-type(3) .sector__article-list {
+.sector-what .sector__article-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 @media screen and (width < 1024px) and (width >= 768px) {
-  .sector:nth-last-of-type(3) .sector__article-list {
+  .sector-what .sector__article-list {
     display: flex;
     flex-direction: column;
   }
 }
 
 @media screen and (width < 768px) and (width >= 375px) {
-  .sector:not(:last-of-type) {
+  .sector:not(.sector-pictures) {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .sector:nth-last-of-type(3) .sector__article-list {
+  .sector-what .sector__article-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -271,49 +281,50 @@
   font-weight: 400;
 }
 
-.sector:last-of-type .sector-title {
+.sector-gallery .sector-title {
   color: var(--sector-dark-title);
   grid-column: 1/-1;
   inline-size: 100%;
 }
 
-.sector:last-of-type {
+.sector-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 @media screen and (width < 768px) and (width >= 375px) {
-  .sector:last-of-type {
+  .sector-gallery {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 }
 
-.sector:last-of-type .sector__pic {
+.sector-gallery .sector__pic {
   object-fit: cover;
   object-position: center;
   inline-size: 100%;
   block-size: 100%;
 }
 
-.sector:last-of-type .sector__pic:first-of-type,
-.sector:last-of-type .sector__pic:last-of-type {
+.sector-gallery .sector__pic:first-of-type,
+.sector-gallery .sector__pic:last-of-type {
   grid-column: span 2;
 }
 
-.sector:last-of-type .sector__pic:nth-of-type(2),
-.sector:last-of-type .sector__pic:nth-of-type(3) {
+.sector-gallery .sector__pic:nth-of-type(2),
+.sector-gallery .sector__pic:nth-of-type(3) {
   grid-row: span 2;
 }
 
 .footer {
+  min-block-size: 668px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-block-start: 60px;
-  block-size: 80vh;
+  block-size: 100vh;
   position: relative;
   text-align: center;
   padding: 20px;
@@ -325,15 +336,9 @@
   }
 }
 
-@media screen and (width < 1024px) and (width >= 375px) {
-  .footer {
-    block-size: 100vh;
-  }
-}
-
 .footer-title {
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   color: var(--title-color);
-  text-shadow: 4px 4px 0 var(--title-shadow);
+  text-shadow: 2px 2px 0 var(--title-shadow);
 }
