@@ -208,17 +208,18 @@
   color: var(--sector-title-color);
   font-weight: 700;
   font-size: 18px;
+  inline-size: 100%;
 }
 
-.sector-what .sector-title {
+.sector-what-title {
   inline-size: 30%;
 }
 
-@media screen and (width < 1024px) and (width >= 375px) {
+@media screen and (width < 768px) and (width >= 375px) {
   .sector-title {
     inline-size: 100%;
   }
-  .sector-what .sector-title {
+  .sector-what-title {
     inline-size: 100%;
   }
 }
