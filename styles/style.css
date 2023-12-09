@@ -22,7 +22,7 @@
   margin-block-end: 60px;
 }
 
-@media screen and (width < 1024px) and (width >= 375px ) {
+@media screen and (width < 768px) and (width >= 375px ) {
   .header {
     padding: 10px;
     margin-block-end: 40px;
@@ -51,6 +51,17 @@
   border-block-start: 1px solid var(--corner-color);
 }
 
+@media screen and (width < 768px) and (width >= 375px) {
+  .decorated-zone::before {
+    left: 10px;
+    bottom: 10px;
+  }
+  .decorated-zone::after {
+    top: 10px;
+    right: 10px;
+  }
+}
+
 .decorated-rec {
   position: absolute;
   text-transform: uppercase;
@@ -58,6 +69,13 @@
   top: 21px;
   right: 49px;
   line-height: 138.889%;
+}
+
+@media screen and (width < 768px) and (width >= 375px) {
+  .decorated-rec {
+    top: 11px;
+    right: 39px;
+  }
 }
 
 .decorated-rec::after {
@@ -93,6 +111,7 @@
 @media screen and (width < 1024px) {
   .header__theme-menu-list {
     flex-direction: column;
+    gap: 13px;
   }
 }
 
@@ -138,9 +157,16 @@
   margin-inline-start: -2%;
 }
 
-@media screen (width < 768px) {
+@media screen and (width < 1024px) and (width >= 770px) {
+  .header-title {
+    margin-inline-start: -2.5%;
+  }
+}
+
+@media screen and (width < 768px) {
   .header-title {
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    margin-inline-start: 0;
   }
 }
 
@@ -188,27 +214,21 @@
   inline-size: 30%;
 }
 
-@media screen and (width < 1024px) and (width >= 768px) {
-  .sector-why .sector-title, .sector-how .sector-title {
-    inline-size: 90%;
+@media screen and (width < 1024px) and (width >= 375px) {
+  .sector-title {
+    inline-size: 100%;
   }
   .sector-what .sector-title {
-    inline-size: 30%;
-  }
-}
-
-@media screen and (width < 768px) and (width >= 375px) {
-  .sector-title {
     inline-size: 100%;
   }
 }
 
-.sector__article-title, .sector__article-subtitle {
-  margin-block-end: 10px;
-}
-
-.sector-how .sector__article-title {
-  margin-block-end: 0;
+.sector__article-text {
+  color: var(--main-text-color);
+  font-size: inherit;
+  line-height: 130%;
+  font-weight: 400;
+  margin-block-start: 10px;
 }
 
 .sector__article-link {
@@ -234,7 +254,12 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 10px;
-  line-height: 130%;
+}
+
+@media screen and (width < 1024px) and (width >= 768px) {
+  .sector-why, .sector-how {
+    gap: 18px;
+  }
 }
 
 .sector-why .sector__article-list, .sector-how .sector__article-list {
@@ -246,7 +271,6 @@
   display: grid;
   grid-template-rows: repeat(2, auto);
   gap: 20px;
-  line-height: 130%;
 }
 
 .sector-what .sector__article-list {
@@ -263,7 +287,7 @@
 }
 
 @media screen and (width < 768px) and (width >= 375px) {
-  .sector:not(.sector-pictures) {
+  .sector:not(.sector-gallery) {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -332,7 +356,7 @@
 
 @media screen and (width < 768px) and (width >= 375px) {
   .footer {
-    margin-block-start: 40px;
+    margin-block-start: 45px;
   }
 }
 
