@@ -111,7 +111,7 @@
 @media screen and (width < 1024px) {
   .header__theme-menu-list {
     flex-direction: column;
-    gap: 13px;
+    gap: 10px;
   }
 }
 
@@ -125,7 +125,7 @@
   line-height: 100%;
   text-transform: lowercase;
   color: var(--sector-title-color);
-  padding: 0 13px;
+  padding: 1px 13px 5px 13px;
 }
 
 .header__theme-menu-button_active {
@@ -142,9 +142,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border: none;
-  text-decoration: underline;
-  text-underline-position: under;
+  border-block-end: 1px solid var(--corner-color) 
 }
 
 .header-title {
@@ -157,7 +155,7 @@
   margin-inline-start: -2%;
 }
 
-@media screen and (width < 1024px) and (width >= 770px) {
+@media screen and (width < 1024px) and (width >= 768px) {
   .header-title {
     margin-inline-start: -2.5%;
   }
@@ -199,7 +197,7 @@
 @media screen and (width < 768px) and (width >= 375px) {
   .main {
     padding: 0 10px;
-    gap: 50px;
+    gap: 51px;
     margin: 40px 0;
   }
 }
@@ -251,25 +249,26 @@
 }
 
 
-.sector-why, .sector-how {
+.sector {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 10px;
 }
 
 @media screen and (width < 1024px) and (width >= 768px) {
-  .sector-why, .sector-how {
+  .sector {
     gap: 18px;
   }
 }
 
-.sector-why .sector__article-list, .sector-how .sector__article-list {
+.sector__article-list {
   display: grid;
   gap: 20px;
 }
 
 .sector-what {
   display: grid;
+  grid-template-columns: none;
   grid-template-rows: repeat(2, auto);
   gap: 20px;
 }
@@ -277,7 +276,6 @@
 .sector-what .sector__article-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
 }
 
 @media screen and (width < 1024px) and (width >= 768px) {
@@ -357,7 +355,7 @@
 
 @media screen and (width < 768px) and (width >= 375px) {
   .footer {
-    margin-block-start: 45px;
+    margin-block-start: 40px;
   }
 }
 
@@ -366,4 +364,11 @@
   font-weight: 700;
   color: var(--title-color);
   text-shadow: 2px 2px 0 var(--title-shadow);
+}
+
+@media screen and (width < 768px) and (width >= 375px) {
+  .footer-title {
+    margin-inline-start: 2%;
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
 }
